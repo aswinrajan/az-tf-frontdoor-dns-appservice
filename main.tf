@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "portoflio-rg" {
   name     = "${var.prefix}-rg"
   location = var.location
   tags = {
-    env = "prod"
+    env        = "prod"
     costcentre = "corp"
   }
 }

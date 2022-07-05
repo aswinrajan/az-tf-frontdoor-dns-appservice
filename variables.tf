@@ -1,6 +1,6 @@
 variable "prefix" {
-    default = "portfolio" 
+  default = "portfolio"
 }
-variable "location"{
-    default = "westus"
+variable "location" {
+  default = "westus"
 }
