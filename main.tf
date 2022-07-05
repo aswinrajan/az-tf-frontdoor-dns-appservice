@@ -6,7 +6,7 @@ terraform {
       name = "az-tf-portfolio-infra"
     }
   }
-
+}
 provider "azurerm" {
   features {}
 }
