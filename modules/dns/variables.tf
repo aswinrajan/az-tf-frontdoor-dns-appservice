@@ -10,6 +10,9 @@ variable "location" {
   
 }
 
+variable "cdn-endpoint-id" {
+  
+}
 variable "domain" {
     default = "aswinrajan.ca"
 }

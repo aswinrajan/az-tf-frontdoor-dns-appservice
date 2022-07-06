@@ -25,6 +25,7 @@ module "dns" {
   rgname   = azurerm_resource_group.portfolio-rg.name
   prefix   = var.prefix
   location = var.location
+  cdn-endpoint-id = module.cdn.cdn-endpoint-id
 
 }
 
@@ -33,6 +34,9 @@ module "cdn" {
   rgname   = azurerm_resource_group.portfolio-rg.name
   prefix   = var.prefix
   location = var.location
+  webapp-hostname   = module.appservice.webapp-hostname
+  cname-record-name = module.dns.cname-record-name
+  dns-name = module.dns.dns-name
 }
 
 

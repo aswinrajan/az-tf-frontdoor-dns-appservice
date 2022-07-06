@@ -3,5 +3,5 @@ output "cname-record-name" {
 }
 
 output "dns-name" {
-  value = azurerm_dns_zone.portfolio-dns-zone
+  value = azurerm_dns_zone.portfolio-dns-zone.name
 }
