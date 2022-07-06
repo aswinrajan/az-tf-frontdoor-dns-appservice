@@ -12,7 +12,7 @@ resource "azurerm_service_plan" "portfolio-appserviceplan" {
 }
 
 resource "azurerm_linux_web_app" "portfolio-webapp" {
-  name                = "${var.prefix}.${random_integer.random.result}"
+  name                = "${var.prefix}${random_integer.random.result}"
   resource_group_name = var.rgname
   location            = azurerm_service_plan.portfolio-appserviceplan.location
   service_plan_id     = azurerm_service_plan.portfolio-appserviceplan.id
