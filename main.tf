@@ -55,5 +55,11 @@ module "monitoring" {
   subscription   = data.azurerm_subscription.current.display_name
   appservicename = local.appsvc-name
 }
-
+module "frontdoor" {
+  source         = "./modules/frontdoor"
+  rgname         = azurerm_resource_group.portfolio-rg.name
+  prefix         = var.prefix
+  location       = var.location
+  appservicename = local.appsvc-name
+}
 
