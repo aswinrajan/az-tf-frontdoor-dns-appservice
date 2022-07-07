@@ -36,7 +36,7 @@ resource "azurerm_frontdoor" "portfolio-front-door" {
 
   frontend_endpoint {
     name      = "${var.prefix}-frontend-endpoint-name"
-    host_name = "${var.prefix}${random_integer.random.result}.azurefd.net"
+    host_name = "portfolio-front-door.azurefd.net"
   }
 }
 resource "random_integer" "random" {
