@@ -47,4 +47,10 @@ resource "azurerm_frontdoor" "portfolio-frontdoor" {
     session_affinity_enabled          = false 
     session_affinity_ttl_seconds      = 0            
 }
+frontend_endpoint {
+    name                              = var.front_end_point_custom_domain
+    host_name                         = "${var.prefix}.${var.domain}"
+    session_affinity_enabled          = false 
+    session_affinity_ttl_seconds      = 0            
+}
 }

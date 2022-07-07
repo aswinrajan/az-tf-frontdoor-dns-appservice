@@ -62,5 +62,6 @@ module "frontdoor" {
   prefix         = var.prefix
   location       = var.location
   appservicename = local.appsvc-name
+  domain = module.dns.domain
 }
 
