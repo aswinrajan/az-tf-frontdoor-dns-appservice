@@ -56,6 +56,9 @@ frontend_endpoint {
 }
 resource "azurerm_frontdoor_custom_https_configuration" "custom_https_configuration_domain" {
   frontend_endpoint_id              = azurerm_frontdoor.portfolio-frontdoor.frontend_endpoints["${var.front_end_point_custom_domain}"]
-  custom_https_provisioning_enabled = false
+  custom_https_provisioning_enabled = true
+  custom_https_configuration {
+    certificate_source                      = "FrontDoor"
+  }
 }
 
