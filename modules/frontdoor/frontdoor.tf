@@ -7,7 +7,7 @@ resource "azurerm_frontdoor" "portfolio-frontdoor" {
     name               = "portfolioRoutingRule1"
     accepted_protocols = ["Https"]
     patterns_to_match  = ["/*"]
-    frontend_endpoints = [var.front_end_point]
+    frontend_endpoints = [var.front_end_point, var.front_end_point_custom_domain]
     forwarding_configuration {
       forwarding_protocol = "HttpsOnly"
       backend_pool_name   = "portfolioBackend"
