@@ -1,27 +1,7 @@
-resource "azurerm_frontdoor_firewall_policy" "portfoliowafpolicy" {
-  name                              = "${var.prefix}-wafpolicy"
-  resource_group_name               = var.rgname
-  enabled                           = true
-  mode                              = "Prevention"
-  custom_block_response_status_code = 403 
-
-  custom_block_response_body        = "YmxvY2tlZCBieSBmcm9udGRvb3I="
-
-  managed_rule {
-    type    = "DefaultRuleSet"
-    version = "1.0"
-  }
-
-  managed_rule {
-    type    = "Microsoft_BotManagerRuleSet"
-    version = "1.0"
-  }
-}
-
 resource "azurerm_frontdoor" "portfolio-frontdoor" {
   name                                         = var.front_end_point
   resource_group_name                          = var.rgname
-  enforce_backend_pools_certificate_name_check = false
+  
 
   routing_rule {
     name               = "portfolioRoutingRule1"
@@ -65,8 +45,6 @@ resource "azurerm_frontdoor" "portfolio-frontdoor" {
     name                              = var.front_end_point 
     host_name                         = "${var.front_end_point}.azurefd.net"
     session_affinity_enabled          = false 
-    session_affinity_ttl_seconds      = 0     
-    custom_https_provisioning_enabled = false
-    web_application_firewall_policy_link_id = azurerm_frontdoor_firewall_policy.portfoliowafpolicy.id
-  }
+    session_affinity_ttl_seconds      = 0            
+}
 }
