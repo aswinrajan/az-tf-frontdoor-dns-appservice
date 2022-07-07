@@ -19,6 +19,9 @@ resource "azurerm_resource_group" "portfolio-rg" {
     costcentre = "corp"
   }
 }
+data "azurerm_subscription" "current" {
+}
+
 
 module "dns" {
   source   = "./modules/dns"
@@ -26,7 +29,6 @@ module "dns" {
   prefix   = var.prefix
   location = var.location
   cdn-endpoint-id = module.cdn.cdn-endpoint-id
-
 }
 
 module "cdn" {
@@ -45,4 +47,15 @@ module "appservice" {
   rgname   = azurerm_resource_group.portfolio-rg.name
   prefix   = var.prefix
   location = var.location
+  ikey = module.monitoring.ikey
+  cnxn-string = module.monitoring.cnxn-string
+}
+
+module "monitoring" {
+  source   = "./modules/monitoring"
+  rgname   = azurerm_resource_group.portfolio-rg.name
+  prefix   = var.prefix
+  location = var.location
+  subscription = data.azurerm_subscription.current.display_name
+  appservicename = module.appservice.appservicename
 }

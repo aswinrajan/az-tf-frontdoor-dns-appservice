@@ -17,6 +17,9 @@ resource "azurerm_linux_web_app" "portfolio-webapp" {
   location            = azurerm_service_plan.portfolio-appserviceplan.location
   service_plan_id     = azurerm_service_plan.portfolio-appserviceplan.id
   site_config {
-    
+    APPINSIGHTS_INSTRUMENTATIONKEY = var.ikey
+    APPLICATIONINSIGHTS_CONNECTION_STRING = var.cnxn-string
+    ApplicationInsightsAgent_EXTENSION_VERSION = var.ai-agent-version
+    APPINSIGHTS_JAVASCRIPT_ENABLED = true    
   }  
 }
