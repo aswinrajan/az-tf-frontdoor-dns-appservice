@@ -1,5 +1,5 @@
 resource "azurerm_log_analytics_workspace" "portfolio-law" {
-  name                = "${var.prefix}.law"
+  name                = "${var.prefix}-law"
   location            = var.location
   resource_group_name = var.rgname
   sku                 = "PerGB2018"

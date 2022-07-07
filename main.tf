@@ -21,41 +21,46 @@ resource "azurerm_resource_group" "portfolio-rg" {
 }
 data "azurerm_subscription" "current" {
 }
+resource "random_integer" "random" {
+  min = 1
+  max = 50000
+}
+locals {
+  appsvc-name = "${var.prefix}${random_integer.random.result}"
+}
 
 
 module "dns" {
-  source   = "./modules/dns"
-  rgname   = azurerm_resource_group.portfolio-rg.name
-  prefix   = var.prefix
-  location = var.location
-  cdn-endpoint-id = module.cdn.cdn-endpoint-id
+  source                = "./modules/dns"
+  rgname                = azurerm_resource_group.portfolio-rg.name
+  prefix                = var.prefix
+  location              = var.location
+  frontdoor-endpoint-id = module.frontdoor.frontend-endpoint-id
 }
-
-module "cdn" {
-  source   = "./modules/cdn"
-  rgname   = azurerm_resource_group.portfolio-rg.name
-  prefix   = var.prefix
-  location = var.location
-  webapp-hostname   = module.appservice.webapp-hostname
-  cname-record-name = module.dns.cname-record-name
-  dns-name = module.dns.dns-name
-}
-
 
 module "appservice" {
-  source   = "./modules/appservice"
-  rgname   = azurerm_resource_group.portfolio-rg.name
-  prefix   = var.prefix
-  location = var.location
-  ikey = module.monitoring.ikey
-  cnxn-string = module.monitoring.cnxn-string
+  source         = "./modules/appservice"
+  rgname         = azurerm_resource_group.portfolio-rg.name
+  prefix         = var.prefix
+  location       = var.location
+  ikey           = module.monitoring.ikey
+  cnxn-string    = module.monitoring.cnxn-string
+  appservicename = local.appsvc-name
 }
 
 module "monitoring" {
-  source   = "./modules/monitoring"
+  source         = "./modules/monitoring"
+  rgname         = azurerm_resource_group.portfolio-rg.name
+  prefix         = var.prefix
+  location       = var.location
+  subscription   = data.azurerm_subscription.current.display_name
+  appservicename = local.appsvc-name
+}
+module "frontdoor" {
+  source   = "./modules/frontdoor"
   rgname   = azurerm_resource_group.portfolio-rg.name
   prefix   = var.prefix
   location = var.location
-  subscription = data.azurerm_subscription.current.display_name
-  appservicename = module.appservice.appservicename
+
 }
+
