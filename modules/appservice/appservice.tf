@@ -21,4 +21,8 @@ resource "azurerm_linux_web_app" "portfolio-webapp" {
     APPINSIGHTS_JAVASCRIPT_ENABLED             = true
   }
 }
-
+resource "azurerm_app_service_custom_hostname_binding" "appservice-customdomain" {
+  hostname            = "aswinrajan.ca"
+  app_service_name    = azurerm_service_plan.portfolio-appserviceplan.name
+  resource_group_name = var.rgname
+}

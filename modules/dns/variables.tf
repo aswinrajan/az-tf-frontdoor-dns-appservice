@@ -10,7 +10,7 @@ variable "location" {
   
 }
 
-variable "frontdoor-endpoint-id" {
+variable "webapp-id" {
   
 }
 variable "domain" {
