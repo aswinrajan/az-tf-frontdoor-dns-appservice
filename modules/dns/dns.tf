@@ -3,8 +3,8 @@ resource "azurerm_dns_zone" "portfolio-dns-zone" {
   resource_group_name = var.rgname
 }
 
-resource "azurerm_dns_cname_record" "portfolio-cname-record" {
-  name                = "${var.prefix}-cname-frontdoor"
+resource "azurerm_dns_a_record" "portfolio-a-record" {
+  name                = "${var.prefix}"
   zone_name           = azurerm_dns_zone.portfolio-dns-zone.name
   resource_group_name = azurerm_dns_zone.portfolio-dns-zone.resource_group_name
   ttl                 = 1

@@ -1,5 +1,5 @@
-output "cname-record-name" {
-  value = azurerm_dns_cname_record.portfolio-cname-record.name
+output "a-record-name" {
+  value = azurerm_dns_a_record.portfolio-a-record.name
 }
 
 output "dns-name" {
