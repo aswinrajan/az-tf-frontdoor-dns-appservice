@@ -1,3 +1,3 @@
-output "frontendpoint" {
-  value = azurerm_frontdoor.portfolio-frontdoor.cname
+output "frontdoorid" {
+  value = azurerm_frontdoor.portfolio-frontdoor.id
 }
