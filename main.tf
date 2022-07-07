@@ -31,10 +31,10 @@ locals {
 
 
 module "dns" {
-  source                = "./modules/dns"
-  rgname                = azurerm_resource_group.portfolio-rg.name
-  prefix                = var.prefix
-  location              = var.location
+  source    = "./modules/dns"
+  rgname    = azurerm_resource_group.portfolio-rg.name
+  prefix    = var.prefix
+  location  = var.location
   webapp-id = module.appservice.webapp-id
 }
 
@@ -56,11 +56,5 @@ module "monitoring" {
   subscription   = data.azurerm_subscription.current.display_name
   appservicename = local.appsvc-name
 }
-module "frontdoor" {
-  source   = "./modules/frontdoor"
-  rgname   = azurerm_resource_group.portfolio-rg.name
-  prefix   = var.prefix
-  location = var.location
 
-}
 
