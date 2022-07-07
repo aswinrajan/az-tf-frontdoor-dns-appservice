@@ -35,7 +35,7 @@ module "dns" {
   rgname      = azurerm_resource_group.portfolio-rg.name
   prefix      = var.prefix
   location    = var.location
-  frontdoorid = module.frontdoor.frontdoorid
+  frontdoorcname = module.frontdoor.frontdoorcname
 }
 
 module "appservice" {

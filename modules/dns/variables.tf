@@ -10,7 +10,7 @@ variable "location" {
   
 }
 
-variable "frontdoorid" {
+variable "frontdoorcname" {
   
 }
 variable "domain" {
