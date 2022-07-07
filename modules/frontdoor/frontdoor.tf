@@ -17,7 +17,7 @@ resource "azurerm_frontdoor" "portfolio-frontdoor" {
     }
 
   }
-
+  
   backend_pool_load_balancing {
     name = "portfolioLoadBalancingSettings1"
 

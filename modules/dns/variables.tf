@@ -10,7 +10,9 @@ variable "location" {
   
 }
 
-
+variable "frontendpoint" {
+  
+}
 variable "domain" {
     default = "aswinrajan.ca"
 }
