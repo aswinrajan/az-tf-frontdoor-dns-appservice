@@ -8,5 +8,5 @@ resource "azurerm_dns_cname_record" "portfolio-cname-record" {
   zone_name           = azurerm_dns_zone.portfolio-dns-zone.name
   resource_group_name = var.rgname
   ttl                 = 1
-  record             = "www.${var.domain}"
+  record             = "frontdoorfrontendpoint.azurefd.net"
 }
