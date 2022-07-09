@@ -1,7 +1,12 @@
 data "azurerm_client_config" "current" {}
 
+resource "random_integer" "random" {
+  min = 1
+  max = 50000
+}
+
 resource "azurerm_key_vault" "portfolio-key-vault" {
-  name                       = "${var.prefix}keyvault"
+  name                       = "${var.prefix}keyvault${random_integer.random.result}"
   location                   = var.location
   resource_group_name        = var.rgname
   tenant_id                  = data.azurerm_client_config.current.tenant_id
