@@ -37,8 +37,8 @@ module "dns" {
   source         = "./modules/dns"
   rgname         = azurerm_resource_group.portfolio-rg.name
   prefix         = var.prefix
-  location       = var.location
-  frontdoorcname = module.frontdoor.frontdoorcname
+  location       = var.location 
+ 
 }
 
 module "appservice" {
@@ -66,6 +66,7 @@ module "frontdoor" {
   location       = var.location
   appservicename = local.appsvc-name
   domain         = module.dns.domain
+  
 }
 
 

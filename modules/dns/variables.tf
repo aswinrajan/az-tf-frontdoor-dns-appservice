@@ -10,9 +10,6 @@ variable "location" {
   
 }
 
-variable "frontdoorcname" {
-  
-}
 variable "domain" {
     default = "aswinrajan.ca"
 }
