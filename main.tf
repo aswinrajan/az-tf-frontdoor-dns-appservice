@@ -38,8 +38,7 @@ module "dns" {
   rgname      = azurerm_resource_group.portfolio-rg.name
   prefix      = var.prefix
   location    = var.location
-  frontdoorid = module.frontdoor.frontdoorid
-}
+}  
 
 module "appservice" {
   source         = "./modules/appservice"
@@ -66,7 +65,18 @@ module "frontdoor" {
   location       = var.location
   appservicename = local.appsvc-name
   domain         = module.dns.domain
+  kv-secret-name = module.keyvault.kv-secret-name
+  kv-id          = module.keyvault.kv-id
+  depends_on = [
+    module.keyvault.kv-secret-name
+  ]
+}
 
+module "keyvault" {
+  source   = "./modules/keyvault"
+  prefix   = var.prefix
+  location = var.location
+  rgname   = azurerm_resource_group.portfolio-rg.name
 }
 
 

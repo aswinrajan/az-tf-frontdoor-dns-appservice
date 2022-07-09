@@ -15,7 +15,13 @@ variable "appservicename" {
 variable "domain" {
   
 }
+variable "kv-id" {
+    
+}
 
+variable "kv-secret-name" {
+  
+}
 variable "front_end_point" {
     default = "frontdoorfrontendpoint"
 }

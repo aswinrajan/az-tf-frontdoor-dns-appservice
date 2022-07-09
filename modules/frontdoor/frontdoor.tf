@@ -67,11 +67,13 @@ resource "azurerm_frontdoor_custom_https_configuration" "custom_https_configurat
     certificate_source = "FrontDoor"
   }
 }
-resource "azurerm_frontdoor_custom_https_configuration" "custom_https_configuration_domain_apex" {
+/* resource "azurerm_frontdoor_custom_https_configuration" "custom_https_configuration_domain_apex" {
   frontend_endpoint_id              = azurerm_frontdoor.portfolio-frontdoor.frontend_endpoints["${var.front_end_point_custom_domain_apex}"]
   custom_https_provisioning_enabled = true
   custom_https_configuration {
-    certificate_source = "FrontDoor"
+    certificate_source                      = "AzureKeyVault"
+    azure_key_vault_certificate_secret_name = var.kv-secret-name
+    azure_key_vault_certificate_vault_id    = var.kv-id
   }
 }
-
+ */
