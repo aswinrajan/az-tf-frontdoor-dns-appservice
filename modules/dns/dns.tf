@@ -16,5 +16,5 @@ resource "azurerm_dns_a_record" "portfolio-a-record" {
   zone_name           = azurerm_dns_zone.portfolio-dns-zone.name
   resource_group_name = var.rgname
   ttl                 = 1
-  target_resource_id  = var.frontdoorid
+  record             = "frontdoorfrontendpoint.azurefd.net"
 }
