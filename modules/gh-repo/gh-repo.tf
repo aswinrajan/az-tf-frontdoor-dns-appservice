@@ -5,7 +5,7 @@ resource "github_repository" "portfolio-app-repo" {
 }
 
 resource "github_repository_environment" "repo_environment" {
-  repository       = data.github_repository.portfolio-app-repo.name
+  repository       = github_repository.portfolio-app-repo.name
   environment      = "prod"
 }
 
