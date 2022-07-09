@@ -7,7 +7,7 @@ resource "azurerm_frontdoor" "portfolio-frontdoor" {
     name               = "portfolioRoutingRule1"
     accepted_protocols = ["Https"]
     patterns_to_match  = ["/*"]
-    frontend_endpoints = [var.front_end_point, var.front_end_point_custom_domain]
+    frontend_endpoints = [var.front_end_point, var.front_end_point_custom_domain, var.front_end_point_custom_domain_apex]
     forwarding_configuration {
       forwarding_protocol                   = "HttpsOnly"
       backend_pool_name                     = "portfolioBackend"
@@ -50,6 +50,12 @@ resource "azurerm_frontdoor" "portfolio-frontdoor" {
   frontend_endpoint {
     name                         = var.front_end_point_custom_domain
     host_name                    = "www.${var.domain}"
+    session_affinity_enabled     = false
+    session_affinity_ttl_seconds = 0
+  }
+  frontend_endpoint {
+    name                         = var.front_end_point_custom_domain_apex
+    host_name                    = var.domain
     session_affinity_enabled     = false
     session_affinity_ttl_seconds = 0
   }

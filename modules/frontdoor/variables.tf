@@ -22,3 +22,7 @@ variable "front_end_point" {
 variable "front_end_point_custom_domain" {
     default = "frontdoorfrontendpointcustom"
 }
+
+variable "front_end_point_custom_domain_apex" {
+    default = "frontdoorfrontendpointapex"
+}
