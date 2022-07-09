@@ -68,3 +68,8 @@ module "frontdoor" {
   domain         = module.dns.domain
 }
 
+module "github-repo" {
+  source         = "./modules/gh-repo"
+  prefix         = var.prefix
+}
+
