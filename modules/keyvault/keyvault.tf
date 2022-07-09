@@ -107,7 +107,7 @@ resource "azurerm_key_vault_certificate" "portfolio-kv-cert" {
       ]
 
       subject_alternative_names {
-        dns_names = ["aswinrajan.ca"]
+        dns_names = ["aswinrajan.ca,"]
       }
 
       subject            = "${random_integer.random.result}-app-apex-domain"
