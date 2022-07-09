@@ -113,7 +113,7 @@ resource "azurerm_key_vault_certificate" "portfolio-kv-cert" {
         dns_names = ["aswinrajan.ca"]
       }
 
-      subject            = "portfolio-app-apex-domain"
+      subject            = "${random_integer.random.result}-app-apex-domain"
       validity_in_months = 12
     }
   }
