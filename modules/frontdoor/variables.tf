@@ -15,6 +15,7 @@ variable "appservicename" {
 variable "domain" {
   
 }
+
 variable "front_end_point" {
     default = "frontdoorfrontendpoint"
 }

@@ -11,13 +11,18 @@ resource "azurerm_linux_web_app" "portfolio-webapp" {
   resource_group_name = var.rgname
   location            = azurerm_service_plan.portfolio-appserviceplan.location
   service_plan_id     = azurerm_service_plan.portfolio-appserviceplan.id
-  site_config {
-    
+  site_config {  
+    application_stack {
+      node_version = "16-lts"
+    }
   }
+
+
   app_settings = {
     APPINSIGHTS_INSTRUMENTATIONKEY             = var.ikey
     APPLICATIONINSIGHTS_CONNECTION_STRING      = var.cnxn-string
     ApplicationInsightsAgent_EXTENSION_VERSION = "~2"
     APPINSIGHTS_JAVASCRIPT_ENABLED             = true
   }
-}
+
+  }

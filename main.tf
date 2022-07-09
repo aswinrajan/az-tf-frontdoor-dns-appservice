@@ -11,6 +11,9 @@ provider "azurerm" {
   features {}
 }
 
+provider "github" {
+
+}
 resource "azurerm_resource_group" "portfolio-rg" {
   name     = "${var.prefix}-rg"
   location = var.location
@@ -31,10 +34,10 @@ locals {
 
 
 module "dns" {
-  source      = "./modules/dns"
-  rgname      = azurerm_resource_group.portfolio-rg.name
-  prefix      = var.prefix
-  location    = var.location
+  source         = "./modules/dns"
+  rgname         = azurerm_resource_group.portfolio-rg.name
+  prefix         = var.prefix
+  location       = var.location
   frontdoorcname = module.frontdoor.frontdoorcname
 }
 
@@ -57,11 +60,11 @@ module "monitoring" {
   appservicename = local.appsvc-name
 }
 module "frontdoor" {
-  source         = "./modules/frontdoor"
-  rgname         = azurerm_resource_group.portfolio-rg.name
-  prefix         = var.prefix
-  location       = var.location
-  appservicename = local.appsvc-name
-  domain = module.dns.domain
+  source          = "./modules/frontdoor"
+  rgname          = azurerm_resource_group.portfolio-rg.name
+  prefix          = var.prefix
+  location        = var.location
+  appservicename  = local.appsvc-name
+  domain          = module.dns.domain  
 }
 

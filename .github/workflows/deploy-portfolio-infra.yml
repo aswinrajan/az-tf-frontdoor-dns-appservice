@@ -5,6 +5,8 @@ on:
     branches:
     - "main"
   pull_request:
+env:
+  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 permissions:
   contents: read
