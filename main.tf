@@ -60,11 +60,11 @@ module "monitoring" {
   appservicename = local.appsvc-name
 }
 module "frontdoor" {
-  source          = "./modules/frontdoor"
-  rgname          = azurerm_resource_group.portfolio-rg.name
-  prefix          = var.prefix
-  location        = var.location
-  appservicename  = local.appsvc-name
-  domain          = module.dns.domain  
+  source         = "./modules/frontdoor"
+  rgname         = azurerm_resource_group.portfolio-rg.name
+  prefix         = var.prefix
+  location       = var.location
+  appservicename = local.appsvc-name
+  domain         = module.dns.domain
 }
 

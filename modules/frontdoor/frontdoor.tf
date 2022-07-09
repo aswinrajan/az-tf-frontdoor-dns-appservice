@@ -49,7 +49,7 @@ resource "azurerm_frontdoor" "portfolio-frontdoor" {
   }
   frontend_endpoint {
     name                         = var.front_end_point_custom_domain
-    host_name                    = "www"
+    host_name                    = "www.${var.domain}"
     session_affinity_enabled     = false
     session_affinity_ttl_seconds = 0
   }

@@ -12,6 +12,7 @@ resource "azurerm_linux_web_app" "portfolio-webapp" {
   location            = azurerm_service_plan.portfolio-appserviceplan.location
   service_plan_id     = azurerm_service_plan.portfolio-appserviceplan.id
   site_config {  
+    minimum_tls_version = "1.2"
     application_stack {
       node_version = "16-lts"
     }
