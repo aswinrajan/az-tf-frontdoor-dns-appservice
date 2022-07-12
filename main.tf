@@ -31,11 +31,11 @@ locals {
 
 
 module "dns" {
-  source      = "./modules/dns"
-  rgname      = azurerm_resource_group.portfolio-rg.name
-  prefix      = var.prefix
-  location    = var.location
-}  
+  source   = "./modules/dns"
+  rgname   = azurerm_resource_group.portfolio-rg.name
+  prefix   = var.prefix
+  location = var.location
+}
 
 module "appservice" {
   source         = "./modules/appservice"
