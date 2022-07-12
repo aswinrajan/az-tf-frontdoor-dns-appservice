@@ -11,9 +11,6 @@ provider "azurerm" {
   features {}
 }
 
-provider "github" {
-
-}
 resource "azurerm_resource_group" "portfolio-rg" {
   name     = "${var.prefix}-rg"
   location = var.location
